@@ -1,4 +1,4 @@
-import { express } from "express"
+const express = require("express")
 const path = require("path")
 
 const app = express()
@@ -7,7 +7,7 @@ app.use(express.static(__dirname + "/dist/RecipeBook"))
 app.use(forceSSL())
 
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/RecipeBook/index.html'));
   });
 
 const forceSSL = () => {
@@ -21,4 +21,4 @@ const forceSSL = () => {
     }
 }
 
-app.listen(process.env.PORT || 8080)
+app.listen(process.env.PORT || 5000)
