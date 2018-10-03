@@ -1,0 +1,84 @@
+.container {
+    margin: 2rem;
+
+    div {
+        margin: 0.5rem
+    }
+
+    img {
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid rgb(27, 26, 26);
+        padding: 0.5rem;
+        outline: none;
+    }
+
+    input.ng-invalid.ng-touched {
+        border: 1px solid red
+    }
+
+    textarea {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid rgb(27, 26, 26);
+        outline: none;
+        resize: none;   
+    }
+
+    textarea.ng-invalid.ng-touched {
+        border: 1px solid red
+    }
+
+    button {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border:none;
+        cursor: pointer;
+        display: block;
+        outline: none;
+        width: 100%;
+        margin-bottom: 0.2rem;
+    }
+
+    .save{
+        background: rgb(85, 146, 85)
+    }
+
+    .save[disabled]{
+        background: rgb(139, 177, 139);
+        cursor: not-allowed
+    }
+
+    .cancel{
+        background: rgb(180, 34, 34)
+    }
+
+    .ingredients {
+        margin: 0;
+
+        .ingredient-name{
+            width: 68%;
+            margin-right: 2%;
+        }
+
+        .ingredient-amount{
+            width: 18%;
+            margin-right: 2%;
+        }
+
+        .ingredient-delete{
+            width: 10%;
+            display: inline;
+            background: rgb(180, 34, 34);
+            color: white;
+        }
+        
+    }
+}
+

@@ -1,0 +1,16 @@
+.recipesContainer {
+    @media(min-width: 600px){
+        display: grid;
+        grid-template-columns: 40% 60%;    
+    }
+    margin: 1rem;
+}
+
+.container {
+    @media (min-width: 600px){
+        width: 900px;
+        margin: 0 auto;    
+    }
+}
+
+

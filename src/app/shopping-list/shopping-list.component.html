@@ -1,0 +1,9 @@
+<div class="container">
+  <app-shopping-edit></app-shopping-edit>
+  <hr>
+  <ul>
+    <a *ngFor="let ingredient of ingredients; let i = index"
+      (click)="onIngredientSelect(i)"
+      >{{ ingredient.name }} ({{ ingredient.amount }})</a>
+  </ul>
+</div>

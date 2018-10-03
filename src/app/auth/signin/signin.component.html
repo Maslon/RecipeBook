@@ -1,0 +1,14 @@
+<div class="container">
+  <form (ngSubmit)=onSignIn(f) #f="ngForm">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email" ngModel>    
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" ngModel>    
+    </div>
+    <button type="submit" [disabled]="f.invalid">SignIn</button>
+  </form>
+</div>
+  

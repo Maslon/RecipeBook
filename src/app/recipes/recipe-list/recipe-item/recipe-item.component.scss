@@ -1,0 +1,31 @@
+a {
+    color: black;
+    text-decoration: none;
+    
+}
+
+.recipeText {
+    display: inline-block;
+}
+
+img {
+    max-width: 100px;
+    float: right;
+}
+
+.recipe {
+    margin-top: 0.5rem;
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.recipe:hover {
+    background: rgb(231, 227, 227)
+}
+
+.active {
+    background: rgb(231, 227, 227)
+}

@@ -1,0 +1,33 @@
+<nav class="navigation">
+  <ul class="mobile">
+    <!-- <li (click)="onMenuOpen()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </li> -->
+    <li class="appName">Kaseho Recepty</li>
+  </ul>
+  <ul class="web">
+    <ul>
+      <li routerLink="/">Kaseho Recepty</li>
+      <li routerLink="/recipes" routerLinkActive="active">Recipes</li>
+      <li routerLink="/shopping-list" routerLinkActive="active">Shopping List</li>  
+    </ul>
+    <ul class="web web-right">
+      <ng-template [ngIf]="!isAuthenticated()">
+        <li routerLink="/signin">SignIn</li>
+        <li routerLink="/signup">Register</li>         
+      </ng-template>
+      <ng-template [ngIf]="isAuthenticated()">
+        <li (click)="onLogout()">Logout</li>
+        <div class="right-dd">
+          <li>Manage <div class="arrow-bottom"></div></li>
+          <ul class="dropdown">
+            <li (click)="onSaveData()">Save Data</li>
+            <li (click)="onFetchData()">Fetch Data</li>
+          </ul>    
+        </div>
+      </ng-template>
+    </ul>    
+  </ul>
+</nav>
