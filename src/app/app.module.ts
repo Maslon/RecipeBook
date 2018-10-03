@@ -4,9 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http"
 
 import { AppComponent } from './app.component';
-import { HttpModule } from '@angular/http';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -15,12 +15,12 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ShoppingListModule,
     AuthModule,
     AppRoutingModule,
-    HttpModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
