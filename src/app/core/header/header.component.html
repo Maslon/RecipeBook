@@ -14,12 +14,13 @@
       <li routerLink="/shopping-list" routerLinkActive="active">Shopping List</li>  
     </ul>
     <ul class="web web-right">
-      <ng-template [ngIf]="!isAuthenticated()">
+      <ng-template [ngIf]="!(authState | async).authenticated">
         <li routerLink="/signin">SignIn</li>
         <li routerLink="/signup">Register</li>         
       </ng-template>
-      <ng-template [ngIf]="isAuthenticated()">
-        <li (click)="onLogout()">Logout</li>
+      <ng-template [ngIf]="(authState | async).authenticated">
+        <li (click)="onLogout()"
+          *ngIf="(authState | async).authenticated">Logout</li>
         <div class="right-dd">
           <li>Manage <div class="arrow-bottom"></div></li>
           <ul class="dropdown">

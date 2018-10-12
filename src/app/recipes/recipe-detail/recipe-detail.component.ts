@@ -1,8 +1,11 @@
-import { Recipe } from './../recipe.model';
-import { Component, OnInit, HostListener } from '@angular/core';
-import { ShoppingService } from '../../shopping-list/shopping.service';
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions'
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { RecipeService } from '../recipe.service';
+import { Store } from '@ngrx/store';
+import * as fromRecipe from "../store/recipe.reducers"
+import { Observable } from 'rxjs';
+import { take } from "rxjs/operators"
+import * as RecipeActions from './../store/recipe.actions';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -11,22 +14,18 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   dropdownVisible = false;
-  recipe: Recipe;
+  recipeState: Observable<fromRecipe.State>;
   id: number
-  // @HostListener("document:click") onKlik() {
-    
-  // }
   
 
-  constructor(private shoppingService: ShoppingService,
-              private recipeService: RecipeService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
+              private store: Store<fromRecipe.FeatureState>,
               private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params["id"]
-      this.recipe = this.recipeService.getRecipe(this.id)
+      this.recipeState = this.store.select("recipes")
     })
 
   }
@@ -36,11 +35,16 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   sendIngredients(){
-    const recipeClone = JSON.parse(JSON.stringify(this.recipe))
-    this.shoppingService.addIngredients(recipeClone.ingredients)
+    this.store.select("recipes").pipe(
+      take(1)
+    ).subscribe((recipeState: fromRecipe.State) => {
+      const recipeClone = JSON.parse(JSON.stringify(recipeState.recipes))
+      this.store.dispatch(new ShoppingListActions.AddIngredients(recipeClone[this.id].ingredients))
+    })
   }
 
   onDeleteRecipe(){
-    this.recipeService.deleteRecipe(this.id)
+    this.store.dispatch(new RecipeActions.DeleteRecipe(this.id))
+    this.router.navigate(["/recipes"])
   }
 }

@@ -1,7 +1,7 @@
 <div class="recipeDetail">
-  <img src="{{ recipe.imagePath }}" alt="">
+  <img [src]="(recipeState | async).recipes[id].imagePath" alt="">
   <div>
-      <h1>{{ recipe.name }}</h1>
+      <h1>{{ (recipeState | async).recipes[id].name }}</h1>
     </div>
     <div class="dropdown-wrapper">
       <button (click)="toggleDropdown()">Manage <i class="arrow"></i></button>
@@ -12,9 +12,9 @@
       </ul>
     </div>
   <div class="description">
-    {{ recipe.description }}
+    {{ (recipeState | async).recipes[id].description }}
   </div>  
-  <div class = Ingredients *ngFor="let ingredient of recipe.ingredients">
+  <div class ="Ingredients" *ngFor="let ingredient of (recipeState | async).recipes[id].ingredients">
     {{ingredient.name}}: ({{ ingredient.amount }})
   </div>  
 </div>

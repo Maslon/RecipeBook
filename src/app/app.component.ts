@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from "firebase"
-import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit{
 
-  constructor(private authService: AuthService){}
+  constructor(){}
 
   ngOnInit(){
     firebase.initializeApp({
@@ -17,6 +16,5 @@ export class AppComponent implements OnInit{
       authDomain: "new-recipe-8b516.firebaseapp.com"
     })
 
-    this.authService.loadUser()
   }
 }

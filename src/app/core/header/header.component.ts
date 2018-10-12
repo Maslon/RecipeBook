@@ -1,8 +1,11 @@
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import { ShoppingService } from '../../shopping-list/shopping.service';
-import { RecipeService } from '../../recipes/recipe.service';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromApp from "../../store/app.reducers"
+import * as fromAuth from "../../auth/store/auth.reducers"
+import * as AuthActions from './../../auth/store/auth.actions'
+import * as RecipeActions from './../../recipes/store/recipe.actions'
+import * as ShoppingListActions from './../../shopping-list/store/shopping-list.actions'
 
 @Component({
   selector: 'app-header',
@@ -10,32 +13,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  authState: Observable<fromAuth.State>
 
-  constructor(private recipeService: RecipeService,
-              private shoppingService: ShoppingService,
-              private authService: AuthService,
-              private router: Router) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
+    this.authState = this.store.select("auth")
   }
 
   onSaveData(){
-    this.recipeService.storeRecipes()
-    this.shoppingService.storeIngredients()
+    this.store.dispatch(new RecipeActions.StoreRecipes())
+    this.store.dispatch(new ShoppingListActions.StoreIngredients())
   }
 
   onFetchData(){
-    this.recipeService.fetchRecipes()
-    this.shoppingService.fetchIngredients()
+    this.store.dispatch(new RecipeActions.FetchRecipes())
+    this.store.dispatch(new ShoppingListActions.FetchIngredients())
   }
 
   onLogout(){
-    this.authService.logout()
-    this.router.navigate(["/"])
-  }
-
-  isAuthenticated(){
-    return this.authService.isAuthenticated()
+    this.store.dispatch(new AuthActions.Logout())
   }
 
 }
