@@ -1,8 +1,10 @@
+import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from './../recipe.model';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ShoppingService } from '../../shopping-list/shopping.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,10 +14,9 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailComponent implements OnInit {
   dropdownVisible = false;
   recipe: Recipe;
-  id: number
-  // @HostListener("document:click") onKlik() {
-    
-  // }
+  id: number;
+  faCartPlus = faCartPlus
+
   
 
   constructor(private shoppingService: ShoppingService,
@@ -42,5 +43,10 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe(){
     this.recipeService.deleteRecipe(this.id)
+  }
+
+  onSendIngredient(ingredient){
+    const newIng = new Ingredient(ingredient.name, ingredient.amount)
+    this.shoppingService.addIngredient(newIng)
   }
 }
