@@ -1,8 +1,14 @@
 .recipeDetail {
-    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1rem;
+}
+
+.recipe-name {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
 }
 
 button {
@@ -64,3 +70,11 @@ img {
 .dropdown-wrapper {
     width: 100%;
 }
+
+.ingredient {
+    border: 1px solid rgb(102, 97, 97);
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 80%;
+    margin-bottom: 0.1rem;
+} 
