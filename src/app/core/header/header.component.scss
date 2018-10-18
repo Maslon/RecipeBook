@@ -116,8 +116,18 @@
     margin-top: 0.1rem;
     border-radius: 5px;
     width: 100%;
+    text-align: center;
+
+    li:hover {
+        color: white;
+        cursor: pointer;       
+    }
 }
 
 .open-mobile-nav {
     display: block;
+
+    @media(min-width: 800px){
+        display: none;
+    }
 }
