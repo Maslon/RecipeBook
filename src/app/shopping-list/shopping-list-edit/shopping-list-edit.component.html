@@ -28,7 +28,7 @@
       <button class="add" type="submit" [disabled]="f.invalid"
         [innerText]="editMode ? 'Edit' : 'Add'"
       >Add</button>
-      <button class="delete" (click)="onDelete()" type="button">Delete</button>
+      <button class="delete" (click)="onDeleteChecked()" type="button">Delete checked</button>
       <button class="clear" (click)="onClear()" 
         [disabled]="!name.dirty && name.invalid && !amount.dirty && amount.invalid"
         type="button">Clear</button>

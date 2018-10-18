@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs';
 import { ShoppingService } from './../shopping.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -28,8 +29,9 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   onSubmit(){
     const name = this.shopForm.value.name
     const amount = this.shopForm.value.amount
+    const newIngr = new Ingredient(name, amount)
     if(this.editMode === false){
-      this.shoppingService.addIngredient({name, amount})
+      this.shoppingService.addIngredient(newIngr)
       this.shopForm.reset()
     } else {
       this.shoppingService.updateIngredient({name, amount})
@@ -51,8 +53,14 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     }
   }
 
+  onDeleteChecked(){
+    this.shoppingService.deleteCheckedIngredients()
+  }
+
+
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }
 
+  
 }

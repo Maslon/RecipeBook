@@ -15,8 +15,7 @@ export class ShoppingService {
         new Ingredient("Testoviny", 1)
     ];
     
-    constructor(private router: Router,
-                private dataStorage: DataStorageService) {}
+    constructor(private dataStorage: DataStorageService) {}
 
     getIngredients(){
         return this.ingredients.slice()
@@ -49,8 +48,8 @@ export class ShoppingService {
         this.ingChanged.next(this.getIngredients())
     }
 
-    deleteIngredient(){
-        this.ingredients.splice(this.index, 1)
+    deleteIngredient(index = this.index){
+        this.ingredients.splice(index, 1)
         this.ingChanged.next(this.getIngredients())
     }
 
@@ -65,5 +64,18 @@ export class ShoppingService {
         },
         (error) => console.log(error)
         )
+    }
+
+    onCheckIngredient(index){
+        this.ingredients[index].checked = true
+    }
+
+    onUnCheckIngredient(index){
+        this.ingredients[index].checked = false
+    }
+
+    deleteCheckedIngredients(){
+        this.ingredients = this.ingredients.filter(ing => !ing.checked)
+        this.ingChanged.next(this.getIngredients())
     }
 }

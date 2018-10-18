@@ -6,7 +6,7 @@
     <div class="dropdown-wrapper">
       <button (click)="toggleDropdown()">Manage <i class="arrow"></i></button>
       <ul class="dropdown" [ngClass]="{visible: dropdownVisible}">
-        <a (click)="sendIngredients()">To Shopping List</a>
+        <a (click)="sendIngredients()">Send all ingredients to shopping List</a>
         <a [routerLink]="['edit']">Edit Recipe</a>
         <a (click)="onDeleteRecipe()">Delete Recipe</a>
       </ul>

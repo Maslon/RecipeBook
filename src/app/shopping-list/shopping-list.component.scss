@@ -21,3 +21,28 @@ a:hover {
         margin: 0 auto;    
     }
 }
+
+.trash {
+    float: right;
+    color: #b42222;
+    cursor: pointer;
+}
+
+.checked {
+    float: right;
+    margin-right: 2rem;
+    color: green;
+    cursor: pointer;
+}
+
+.unchecked {
+    float: right;
+    margin-right: 2rem;
+    color: yellow;
+    cursor: pointer;
+}
+
+.check-highlight {
+    background: rgb(211, 207, 207)   
+}
+

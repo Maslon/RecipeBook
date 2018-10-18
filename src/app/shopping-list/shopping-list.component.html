@@ -3,7 +3,21 @@
   <hr>
   <ul>
     <a *ngFor="let ingredient of ingredients; let i = index"
-      (click)="onIngredientSelect(i)"
-      >{{ ingredient.name }} ({{ ingredient.amount }})</a>
+      [ngClass]="{'check-highlight': ingredient.checked}"
+      (click)="onIngredientSelect(i)">
+      {{ ingredient.name }} ({{ ingredient.amount }}) 
+      <span class="trash"
+       (click)="deleteIngredient(i)">
+       <fa-icon [icon]="faTrash"></fa-icon></span>
+       <span class="checked" *ngIf="!ingredient.checked; else notChecked"
+       (click)="checkIngredient(i)">
+       <fa-icon [icon]="faCheckCircle"></fa-icon></span>
+       <ng-template #notChecked>
+        <span class="unchecked"
+        (click)="unCheckIngredient(i)">
+        <fa-icon [icon]="faTimesCircle"></fa-icon></span>
+       </ng-template>        
+      </a>
+      
   </ul>
 </div>
