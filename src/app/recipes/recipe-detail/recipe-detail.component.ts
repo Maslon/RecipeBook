@@ -1,6 +1,6 @@
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from './../recipe.model';
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { ShoppingService } from '../../shopping-list/shopping.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
@@ -22,7 +22,7 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private shoppingService: ShoppingService,
               private recipeService: RecipeService,
               private route: ActivatedRoute,
-              private router: Router) {}
+              private elRef: ElementRef) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -48,5 +48,11 @@ export class RecipeDetailComponent implements OnInit {
   onSendIngredient(ingredient){
     const newIng = new Ingredient(ingredient.name, ingredient.amount)
     this.shoppingService.addIngredient(newIng)
+  }
+
+  @HostListener("document: click", ["$event"]) clickOutside() {
+    if(!this.elRef.nativeElement.contains(event.target)){
+      this.dropdownVisible = false
+    }    
   }
 }

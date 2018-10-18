@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthInterceptor } from './../shared/auth.interceptor';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './../app-routing.module';
@@ -14,7 +15,8 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
     ],
     imports: [
         CommonModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FontAwesomeModule
     ],
     exports: [
         AppRoutingModule,

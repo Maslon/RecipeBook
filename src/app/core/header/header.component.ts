@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { ShoppingService } from '../../shopping-list/shopping.service';
 import { RecipeService } from '../../recipes/recipe.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  faBars = faBars
+  mobileNav = false;
 
   constructor(private recipeService: RecipeService,
               private shoppingService: ShoppingService,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private elRef: ElementRef) { }
 
   ngOnInit() {
   }
@@ -38,4 +42,21 @@ export class HeaderComponent implements OnInit {
     return this.authService.isAuthenticated()
   }
 
+  onMobileNav(){
+    this.mobileNav = !this.mobileNav
+  }
+
+  close(event){
+    console.log(event)
+  }
+
+  @HostListener("document: click", ["$event"]) clickOutside() {
+    if(!this.elRef.nativeElement.contains(event.target)){
+      this.mobileNav = false
+    }    
+  }
+
+  onPageChange(){
+    this.mobileNav = false
+  }
 }

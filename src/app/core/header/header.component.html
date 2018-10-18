@@ -1,12 +1,25 @@
 <nav class="navigation">
   <ul class="mobile">
-    <!-- <li (click)="onMenuOpen()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </li> -->
+    <span class="menu"  (click)="onMobileNav()"><fa-icon [icon]="faBars"></fa-icon></span>
     <li class="appName">Kaseho Recepty</li>
   </ul>
+  <div>
+    <ul class="mobile-dropdown" [ngClass]="{'open-mobile-nav': mobileNav}" (click)="onPageChange()">
+      <li routerLink="/recipes" >Recipes</li>
+      <li routerLink="/shopping-list">Shopping List</li>
+      <ng-template [ngIf]="!isAuthenticated()">
+        <li routerLink="/signin">SignIn</li>
+        <li routerLink="/signup">Register</li>         
+      </ng-template>
+      <ng-template [ngIf]="isAuthenticated()">
+        <li (click)="onLogout()">Logout</li>
+        <div class="right-dd">
+        <li (click)="onSaveData()">Save Data</li>
+        <li (click)="onFetchData()">Fetch Data</li>
+        </div>
+      </ng-template>
+    </ul>    
+  </div>
   <ul class="web">
     <ul>
       <li routerLink="/">Kaseho Recepty</li>

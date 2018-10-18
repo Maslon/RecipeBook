@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
+    overflow: hidden;
 }
 
 .recipe-name {
@@ -82,4 +83,9 @@ img {
 .shopping-icon {
     float: right;
     cursor: pointer;
+    color: rgb(71, 69, 69)
+}
+
+.shopping-icon:hover {
+    color: black
 }

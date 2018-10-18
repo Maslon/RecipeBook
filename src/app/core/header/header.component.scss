@@ -4,10 +4,13 @@
 
     ul.mobile {
         margin: 0;
+        margin-left: 0.5rem;
         padding: 0;
         display: flex;
         list-style: none;
         align-items: center;
+
+        
 
         li {
             cursor: pointer;
@@ -105,3 +108,16 @@
     display: inline-block
 }
 
+.mobile-dropdown {
+    display: none;
+    list-style: none;
+    background: grey;
+    padding: 6px;
+    margin-top: 0.1rem;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.open-mobile-nav {
+    display: block;
+}

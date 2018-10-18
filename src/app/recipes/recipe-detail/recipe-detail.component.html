@@ -1,8 +1,8 @@
 <div class="recipeDetail">
   <img src="{{ recipe.imagePath }}" alt="">
-  <div>
-      <h1>{{ recipe.name }}</h1>
-    </div>
+  <div class="recipe-name">
+      <h2>{{ recipe.name }}</h2>
+  </div>
     <div class="dropdown-wrapper">
       <button (click)="toggleDropdown()">Manage <i class="arrow"></i></button>
       <ul class="dropdown" [ngClass]="{visible: dropdownVisible}">
@@ -15,7 +15,7 @@
     {{ recipe.description }}
   </div>  
   <div class="ingredient" *ngFor="let ingredient of recipe.ingredients">
-    {{ingredient.name}}: ({{ ingredient.amount }}) <span (click)="onSendIngredient(ingredient)" class="shopping-icon"><fa-icon [icon]="faCartPlus "></fa-icon></span>
+    {{ingredient.name}}: ({{ ingredient.amount }}) <span (click)="onSendIngredient(ingredient)" class="shopping-icon"><fa-icon [icon]="faCartPlus"></fa-icon></span>
   </div>  
 </div>
 

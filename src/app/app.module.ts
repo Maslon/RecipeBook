@@ -11,7 +11,7 @@ import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,7 @@ import { CoreModule } from './core/core.module';
     ShoppingListModule,
     AuthModule,
     AppRoutingModule,
-    CoreModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

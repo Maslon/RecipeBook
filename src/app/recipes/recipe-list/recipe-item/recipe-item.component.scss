@@ -1,16 +1,17 @@
 a {
     color: black;
-    text-decoration: none;
-    
+    text-decoration: none;    
 }
+
+
 
 .recipeText {
     display: inline-block;
+    word-wrap:break-word; 
 }
 
 img {
     max-width: 100px;
-    float: right;
 }
 
 .recipe {
@@ -20,6 +21,9 @@ img {
     border-radius: 10px;
     cursor: pointer;
     outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .recipe:hover {

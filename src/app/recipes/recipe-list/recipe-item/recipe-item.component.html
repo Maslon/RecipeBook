@@ -1,9 +1,9 @@
 <div class="recipe" [routerLink]="[index]" routerLinkActive="active" (click)="console()">
     <div class="recipeText">
-      <h4>{{ recipe.name }}</h4>
+      <h4>{{ recipe.name.substr(0, 30) }}</h4>
       <p>{{ recipe.description }}</p>
     </div>
-    <span>
+    <div class="img-container">
       <img src="{{ recipe.imagePath }}" alt="">
-    </span>
+    </div>
   </div>    
