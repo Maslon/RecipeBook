@@ -39,10 +39,12 @@ export class RecipeDetailComponent implements OnInit {
   sendIngredients(){
     const recipeClone = JSON.parse(JSON.stringify(this.recipe))
     this.shoppingService.addIngredients(recipeClone.ingredients)
+    this.dropdownVisible = false;
   }
 
   onDeleteRecipe(){
     this.recipeService.deleteRecipe(this.id)
+    this.dropdownVisible = false;
   }
 
   onSendIngredient(ingredient){

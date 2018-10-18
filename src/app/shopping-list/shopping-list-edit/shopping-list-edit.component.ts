@@ -13,17 +13,19 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   @ViewChild("f") shopForm: NgForm
   editMode: boolean = false
   subscription: Subscription
+  subscription2: Subscription
 
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
-   this.subscription =  this.shoppingService.editIngredient.subscribe((ingredient) => {
+   this.subscription = this.shoppingService.editIngredient.subscribe((ingredient) => {
       this.shopForm.setValue({
         name: ingredient.name,
         amount: ingredient.amount
       })
       this.editMode = true          
     })
+    this.subscription2 = this.shoppingService.deletedIngredient.subscribe(() => this.onClear())
   }
 
   onSubmit(){
@@ -45,21 +47,16 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     this.editMode = false
   }
 
-  onDelete(){
-    if(this.editMode === true) {
-      this.shoppingService.deleteIngredient()
-      this.shopForm.reset()
-      this.editMode = false
-    }
-  }
 
   onDeleteChecked(){
     this.shoppingService.deleteCheckedIngredients()
+    this.shopForm.reset()
   }
 
 
   ngOnDestroy(){
     this.subscription.unsubscribe()
+    this.subscription2.unsubscribe()
   }
 
   

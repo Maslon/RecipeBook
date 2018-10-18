@@ -1,13 +1,13 @@
 import { DataStorageService } from './../shared/data-storage.service';
 import { Injectable } from '@angular/core';
 import { Ingredient } from "../shared/ingredient.model";
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Injectable({providedIn: "root"})
 
 export class ShoppingService {
     editIngredient = new Subject<Ingredient>()
+    deletedIngredient = new Subject<void>()
     index: number;
     ingChanged = new Subject<Ingredient[]>()
     ingredients: Ingredient[] = [
@@ -48,9 +48,10 @@ export class ShoppingService {
         this.ingChanged.next(this.getIngredients())
     }
 
-    deleteIngredient(index = this.index){
+    deleteIngredient(index){
         this.ingredients.splice(index, 1)
         this.ingChanged.next(this.getIngredients())
+        this.deletedIngredient.next()
     }
 
     storeIngredients(){
