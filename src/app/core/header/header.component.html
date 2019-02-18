@@ -1,7 +1,7 @@
 <nav class="navigation">
   <ul class="mobile">
     <span class="menu"  (click)="onMobileNav()"><fa-icon [icon]="faBars"></fa-icon></span>
-    <li class="appName">Kaseho Recepty</li>
+    <li class="appName">RecipesApp</li>
   </ul>
   <div>
     <ul class="mobile-dropdown" [ngClass]="{'open-mobile-nav': mobileNav}" (click)="onPageChange()">
@@ -22,7 +22,7 @@
   </div>
   <ul class="web">
     <ul>
-      <li routerLink="/">Kaseho Recepty</li>
+      <li routerLink="/">RecipesApp</li>
       <li routerLink="/recipes" routerLinkActive="active">Recipes</li>
       <li routerLink="/shopping-list" routerLinkActive="active">Shopping List</li>  
     </ul>

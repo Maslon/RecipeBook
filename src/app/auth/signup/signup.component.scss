@@ -46,3 +46,21 @@ button:hover {
     cursor: pointer;
     outline: none;
 }
+
+.disclaimer {
+    margin-top: 2rem;
+    color: rgb(131, 122, 122);
+
+    @media(min-width: 600px){
+        width: 500px;
+        margin: 2rem auto;
+    }
+
+    .disclaimer-text {
+        margin-left: 1rem;
+    }
+
+}
+
+
+

@@ -2,7 +2,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from './../recipe.model';
 import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 import { ShoppingService } from '../../shopping-list/shopping.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 

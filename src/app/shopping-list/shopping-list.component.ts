@@ -40,10 +40,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   checkIngredient(index){
+    event.stopPropagation()
     this.shoppingService.onCheckIngredient(index)
   }
 
   unCheckIngredient(index){
+    event.stopPropagation()
     this.shoppingService.onUnCheckIngredient(index)
   }
 }
