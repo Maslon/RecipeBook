@@ -9,8 +9,8 @@ import { DataStorageService } from "../shared/data-storage.service";
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>()
     private recipes: Recipe[] = [
-        new Recipe("Rizek se zemakem", "solidne rizek", "http://media.igurmet.cz/cache/ae/4d/ae4dbbd2322cb635356c1792d880dc24.jpg", [new Ingredient("Zemaky", 3), new Ingredient("Strouhanka", 1)]),
-        new Recipe("Rizek se zemakem", "solidne rizek", "https://recepty.cuketka.cz/media/recipe/main_imgs/rizek_z_kapra_2_2048_65.jpg", [new Ingredient("Mouka", 3), new Ingredient("Ryba", 3)])
+        new Recipe("Placeholder", "placeholder", "http://media.igurmet.cz/cache/ae/4d/ae4dbbd2322cb635356c1792d880dc24.jpg", [new Ingredient("placeholder", 3), new Ingredient("placeholder", 1)]),
+        new Recipe("Placeholder", "placeholder", "https://recepty.cuketka.cz/media/recipe/main_imgs/rizek_z_kapra_2_2048_65.jpg", [new Ingredient("placeholder", 3), new Ingredient("placeholder", 3)])
     ]
 
     constructor(private storageService: DataStorageService){}
