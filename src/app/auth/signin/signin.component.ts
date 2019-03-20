@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+	selector: 'app-signin',
+	templateUrl: './signin.component.html',
+	styleUrls: [
+		'./signin.component.scss'
+	]
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
+	err: string;
+	errSub: Subscription;
 
-  constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService) {}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.errSub = this.authService.sendErr.subscribe(msg => (this.err = msg));
+	}
 
-  onSignIn(form: NgForm) {
-    const email = form.value.email
-    const password = form.value.email
-    this.authService.signinUser(email, password)
-  }
+	onSignIn(form: NgForm) {
+		const email = form.value.email;
+		const password = form.value.email;
+		this.authService.signinUser(email, password);
+	}
 
+	ngOnDestroy() {
+		this.errSub.unsubscribe();
+	}
 }

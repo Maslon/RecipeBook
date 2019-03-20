@@ -1,5 +1,5 @@
 <div>
-  <button [routerLink]="['new']" >New Recipe</button>
+  <button (click)="onNewRecipe()">New Recipe</button>
 </div>
 <hr>
 <app-recipe-item 
@@ -7,4 +7,6 @@
   [recipe]= "recipe"
   [index]="i"
 ></app-recipe-item>
+
+<p class="error-msg" [ngStyle]="{opacity: err ? '1' : '0'}">{{ err }}</p>
 

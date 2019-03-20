@@ -10,5 +10,6 @@
     </div>
     <button type="submit" [disabled]="f.invalid">SignIn</button>
   </form>
+  <p class="error-msg" [ngStyle]="{opacity : err ? '1' : '0'}">{{ err }}</p>
 </div>
   

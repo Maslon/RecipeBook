@@ -1,66 +1,67 @@
 .container {
-    margin: 2rem auto;
+	margin: 2rem auto;
 
-    @media(min-width: 600px){
-        width: 500px;
-    }
+	@media (min-width: 600px) {
+		width: 500px;
+	}
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 1rem;
 }
 
 div {
-    margin-bottom: 1rem;
-    width: 100%;
-    
+	margin-bottom: 1rem;
+	width: 100%;
 }
 
 label {
-    display: inline-block;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
+	display: inline-block;
+	font-weight: bold;
+	margin-bottom: 0.3rem;
 }
 
 input {
-    display: block;
-    padding: 0.5rem;
-    width: 100%;
-    outline: none;
+	display: block;
+	padding: 0.5rem;
+	width: 100%;
+	outline: none;
 }
 
 button {
-    background: white;
-    border: 1px solid rgb(150, 142, 142);
-    border-radius: 5px;
-    padding: 0.5rem;
+	background: white;
+	border: 1px solid rgb(150, 142, 142);
+	border-radius: 5px;
+	padding: 0.5rem;
 }
 
 button:hover {
-    background: rgb(150, 142, 142);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
+	background: rgb(150, 142, 142);
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
 }
 
 .disclaimer {
-    margin-top: 2rem;
-    color: rgb(131, 122, 122);
+	margin-top: 2rem;
+	color: rgb(131, 122, 122);
 
-    @media(min-width: 600px){
-        width: 500px;
-        margin: 2rem auto;
-    }
+	@media (min-width: 600px) {
+		width: 500px;
+		margin: 2rem auto;
+	}
 
-    .disclaimer-text {
-        margin-left: 1rem;
-    }
-
+	.disclaimer-text {
+		margin-left: 1rem;
+	}
 }
 
-
-
+.error-msg {
+	text-align: center;
+	padding: 1rem;
+	background: rgba(228, 0, 0, 0.5);
+}
